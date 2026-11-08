@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica - The Metamorphosis Part 1 Self-Reading Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .correct-answer {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #14532d !important;
+        }
+        .incorrect-answer {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #7f1d1d !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Branding -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="bg-brand-600 text-white font-black px-3 py-1 rounded text-xl tracking-wider">PREPA</span>
+                <span class="text-2xl font-bold tracking-tight text-slate-100">Práctica</span>
+                <span class="hidden md:inline-block text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded ml-2 border border-slate-700">Self-Reading Check</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300 mt-2 sm:mt-0">
+                Book Analysis: <span class="text-brand-500 font-semibold">The Metamorphosis (Part 1)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+        <!-- Banner Card -->
+        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Part 1 True/False Assessment</h1>
+                <p class="text-slate-600 text-sm mt-1">20 Interactive True/False Reading Comprehension Questions based on Part 1 of <em>The Metamorphosis</em> by Franz Kafka[cite: 3, 5].</p>
+            </div>
+            <div id="score-display" class="hidden bg-brand-50 border border-brand-200 px-6 py-3 rounded-lg text-center min-w-[140px]">
+                <span class="text-xs text-brand-800 uppercase font-bold tracking-wider block">Final Score</span>
+                <span id="score-value" class="text-3xl font-black text-brand-600">0/20</span>
+            </div>
+        </div>
+
+        <!-- Quiz Form -->
+        <form id="tf-quiz-form" class="space-y-4">
+
+            <!-- Question 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-1">
+                <p class="font-semibold text-slate-900 mb-3">1. Gregor Samsa wakes up in the morning to find that he has been transformed into a insect-like creature[cite: 5].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q1" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q1" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-2">
+                <p class="font-semibold text-slate-900 mb-3">2. Before his transformation, Gregor worked as an accountant at a local bank[cite: 5].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q2" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q2" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-3">
+                <p class="font-semibold text-slate-900 mb-3">3. Gregor keeps a picture hanging on his wall of a woman dressed in a fur hat, boa, and muff[cite: 5].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q3" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q3" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-4">
+                <p class="font-semibold text-slate-900 mb-3">4. Gregor easily sleeps on his right side after his transformation to relax[cite: 6].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q4" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q4" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-5">
+                <p class="font-semibold text-slate-900 mb-3">5. Gregor stays at his job primarily to pay off his parents' debt to his employer[cite: 7].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q5" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q5" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-6">
+                <p class="font-semibold text-slate-900 mb-3">6. Gregor's alarm clock was set for 6:00 AM, but he slept through it[cite: 7].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q6" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q6" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-7">
+                <p class="font-semibold text-slate-900 mb-3">7. Gregor has taken frequent sick leaves during his five years of service at the firm[cite: 8].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q7" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q7" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-8">
+                <p class="font-semibold text-slate-900 mb-3">8. When Gregor speaks to his mother through the door, his voice has an unusual squeaking sound mixed in with it[cite: 8].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q8" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q8" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-9">
+                <p class="font-semibold text-slate-900 mb-3">9. Gregor routinely locks all the doors of his room at night, even when he is at home[cite: 9].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q9" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q9" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-10">
+                <p class="font-semibold text-slate-900 mb-3">10. The office manager (chief clerk) visits Gregor's apartment in person to inquire about why Gregor missed his early train[cite: 12, 14].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q10" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q10" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-11">
+                <p class="font-semibold text-slate-900 mb-3">11. Gregor's mother tells the manager that Gregor spends his evenings going out to parties and social events[cite: 14].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q11" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q11" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-12">
+                <p class="font-semibold text-slate-900 mb-3">12. The office manager accuses Gregor of potential neglect of his work duties and mentions suspected cash collections.</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q12" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q12" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-13">
+                <p class="font-semibold text-slate-900 mb-3">13. Gregor uses human hands and key tools to unlock his door quickly[cite: 19].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q13" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q13" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-14">
+                <p class="font-semibold text-slate-900 mb-3">14. Brown fluid drips from Gregor's mouth as he turns the key in the lock using his jaws[cite: 19].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q14" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q14" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-15">
+                <p class="font-semibold text-slate-900 mb-3">15. The office manager reacts with calm understanding when he finally sees Gregor's transformed state[cite: 20].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q15" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q15" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-16">
+                <p class="font-semibold text-slate-900 mb-3">16. Upon seeing Gregor, his mother collapses directly onto her skirts on the floor[cite: 20].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q16" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q16" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-17">
+                <p class="font-semibold text-slate-900 mb-3">17. Gregor experiences a moment of physical well-being when he lands onto all of his small legs on the floor[cite: 24].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q17" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q17" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-18">
+                <p class="font-semibold text-slate-900 mb-3">18. Gregor's father uses a walking cane and a newspaper to drive Gregor back toward his bedroom[cite: 25].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q18" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q18" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-19">
+                <p class="font-semibold text-slate-900 mb-3">19. Gregor returns to his room easily because the doorway was wide enough for his body[cite: 26, 27].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q19" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q19" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-card" id="q-box-20">
+                <p class="font-semibold text-slate-900 mb-3">20. At the end of Part 1, Gregor gets stuck in the doorway and receives a hard push from behind by his father that forces him into his room, causing him to bleed[cite: 27].</p>
+                <div class="flex space-x-6 text-sm">
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q20" value="True" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">True</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-slate-50">
+                        <input type="radio" name="q20" value="False" class="h-4 w-4 text-brand-600">
+                        <span class="font-medium">False</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+            </div>
+
+            <button type="button" onclick="evaluateQuiz()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-6 rounded-xl transition shadow-md text-lg">Check Answers & Score</button>
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            <p>&copy; PrepaPráctica Educational Companion. Interactive High School Literature Self-Check.</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        const answerKey = {
+            q1: "True",
+            q2: "False",
+            q3: "True",
+            q4: "False",
+            q5: "True",
+            q6: "False",
+            q7: "False",
+            q8: "True",
+            q9: "True",
+            q10: "True",
+            q11: "False",
+            q12: "True",
+            q13: "False",
+            q14: "True",
+            q15: "False",
+            q16: "True",
+            q17: "True",
+            q18: "True",
+            q19: "False",
+            q20: "True"
+        };
+
+        const feedback = {
+            q1: "True: Gregor wakes up to discover he has been changed in bed into a insect-like creature[cite: 5].",
+            q2: "False: Gregor was a traveling salesman, not a bank accountant[cite: 5].",
+            q3: "True: He keeps a framed magazine picture of a lady wrapped in a fur hat, boa, and muff[cite: 5].",
+            q4: "False: He finds it impossible to sleep on his right side because his new body rolls him back onto his hard back[cite: 6].",
+            q5: "True: Gregor works hard to pay off his parents' debt to his boss, which he estimates will take 5 to 6 more years[cite: 7].",
+            q6: "False: His alarm clock was set for 4:00 AM, but it was already 6:30 AM when he noticed[cite: 7].",
+            q7: "False: Gregor had not been sick once during five years of service[cite: 8].",
+            q8: "True: His voice has an underlying painful squeaking that distorts his words[cite: 8].",
+            q9: "True: Gregor congratulates himself on his habit of locking all doors overnight even at home[cite: 9].",
+            q10: "True: The manager personally comes to the Samsa household to inquire why Gregor missed the 5 AM train[cite: 7, 12].",
+            q11: "False: His mother explains that Gregor has no night life and spends his evenings reading or doing fretwork at home[cite: 14].",
+            q12: "True: The manager scolds Gregor for barricading his door and hints at recent unsatisfactory productivity and money collections[cite: 16].",
+            q13: "False: Gregor lacks human hands and has no real teeth, so he struggles to turn the key using his jaws[cite: 19].",
+            q14: "True: Turning the key in the lock using his jaw inflicts damage, causing brown liquid to spill from his mouth[cite: 19].",
+            q15: "False: The manager utters an alarmed 'Oh!' and flees down the hall in horror[cite: 20, 23].",
+            q16: "True: Upon seeing Gregor, his mother steps toward him and collapses into her skirts[cite: 20].",
+            q17: "True: When Gregor lands on his small legs, he feels a sense of physical ease as they obey his movements[cite: 24].",
+            q18: "True: His father grabs a walking stick and a newspaper to hiss and drive Gregor back into his room[cite: 25].",
+            q19: "False: Gregor's body is too wide to fit smoothly through the single open door wing[cite: 26, 27].",
+            q20: "True: Gregor gets wedged in the doorway, and his father gives him a strong push from behind that sends him bleeding into his room[cite: 27]."
+        };
+
+        function evaluateQuiz() {
+            let totalScore = 0;
+
+            for (let i = 1; i <= 20; i++) {
+                const qKey = 'q' + i;
+                const card = document.getElementById(`q-box-${i}`);
+                const exp = card.querySelector('.explanation');
+                const selectedOption = document.querySelector(`input[name="${qKey}"]:checked`);
+
+                exp.classList.remove('hidden');
+
+                if (selectedOption && selectedOption.value === answerKey[qKey]) {
+                    totalScore++;
+                    card.className = "bg-white p-6 rounded-xl shadow-sm border border-emerald-500 bg-emerald-50/20 q-card";
+                    exp.className = "explanation mt-3 p-3 text-xs rounded correct-answer font-medium";
+                    exp.innerHTML = `✓ Correct! ${feedback[qKey]}`;
+                } else {
+                    card.className = "bg-white p-6 rounded-xl shadow-sm border border-red-500 bg-red-50/20 q-card";
+                    exp.className = "explanation mt-3 p-3 text-xs rounded incorrect-answer font-medium";
+                    exp.innerHTML = `✗ Incorrect. Correct answer: <strong>${answerKey[qKey]}</strong>.<br>${feedback[qKey]}`;
+                }
+            }
+
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreValue = document.getElementById('score-value');
+            scoreDisplay.classList.remove('hidden');
+            scoreValue.innerText = `${totalScore}/20`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
