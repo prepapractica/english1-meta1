@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepaPráctica - The Metamorphosis Self-Reading Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        kafka: {
+                            bg: '#f8fafc',
+                            card: '#ffffff',
+                            dark: '#0f172a',
+                            accent: '#475569'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-btn.active {
+            border-bottom: 3px solid #16a34a;
+            color: #16a34a;
+            font-weight: 700;
+        }
+        .correct-answer {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #14532d !important;
+        }
+        .incorrect-answer {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #7f1d1d !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Branding -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="bg-brand-600 text-white font-black px-3 py-1 rounded text-xl tracking-wider">PREPA</span>
+                <span class="text-2xl font-bold tracking-tight text-slate-100">Práctica</span>
+                <span class="hidden md:inline-block text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded ml-2 border border-slate-700">High School Self-Reading Companion</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300 mt-2 sm:mt-0">
+                Book Analysis: <span class="text-brand-500 font-semibold">The Metamorphosis</span> by Franz Kafka
+            </div>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <nav class="bg-slate-800 border-t border-slate-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 overflow-x-auto text-sm">
+                <button onclick="switchTab('home')" id="tab-home" class="tab-btn active px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">Home & Author</button>
+                <button onclick="switchTab('ch1')" id="tab-ch1" class="tab-btn px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">Chapter 1 (12 Qs)</button>
+                <button onclick="switchTab('ch2')" id="tab-ch2" class="tab-btn px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">Chapter 2 (12 Qs)</button>
+                <button onclick="switchTab('ch3')" id="tab-ch3" class="tab-btn px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">Chapter 3 (12 Qs)</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="tab-btn px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">Concept Vocabulary</button>
+                <button onclick="switchTab('github')" id="tab-github" class="tab-btn px-4 py-3 text-slate-300 hover:text-white whitespace-nowrap transition">GitHub Setup Guide</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION: HOME & AUTHOR SPOTLIGHT -->
+        <section id="sec-home" class="space-y-8">
+            <div class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="w-full lg:w-1/3 flex flex-col items-center text-center bg-slate-50 p-6 rounded-lg border border-slate-200">
+                        <div class="w-36 h-36 bg-slate-300 rounded-full mb-4 overflow-hidden shadow-inner border-2 border-slate-400 flex items-center justify-center text-slate-600 font-bold">
+                            Franz Kafka
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-900">Franz Kafka (1883–1924)[cite: 1]</h2>
+                        <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">German-speaking Jewish Writer[cite: 1]</p>
+                        <hr class="w-16 border-t-2 border-brand-500 my-4">
+                        <p class="text-sm text-slate-600 italic">"Themes of domestic pressure and social anxiety recur often in Kafka's fiction."[cite: 1]</p>
+                    </div>
+                    
+                    <div class="w-full lg:w-2/3 space-y-4">
+                        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Prepare to Read: <span class="text-brand-600">The Metamorphosis</span>[cite: 1]</h1>
+                        <p class="text-slate-600 leading-relaxed">
+                            Welcome to the <strong class="text-slate-800">PrepaPráctica</strong> self-reading check. Franz Kafka was one of the greatest German-speaking writers of the twentieth century, but he received no support from his family[cite: 1]. His mother did not understand his passion for literature, while his father, a man obsessed with materialism, would not accept "author" as a legitimate profession[cite: 1]. Kafka was torn between multiple social worlds; his German identity clashed constantly with his Jewish heritage[cite: 1].
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+                            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg">
+                                <h3 class="font-bold text-emerald-900 text-sm uppercase">Total Questions</h3>
+                                <p class="text-2xl font-black text-emerald-700">36 Questions</p>
+                                <p class="text-xs text-emerald-600">12 per chapter (MC, T/F, Blank, Vocab)</p>
+                            </div>
+                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-lg">
+                                <h3 class="font-bold text-sky-900 text-sm uppercase">Target Audience</h3>
+                                <p class="text-2xl font-black text-sky-700">High School</p>
+                                <p class="text-xs text-sky-600">Literature & Language Arts</p>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                                <h3 class="font-bold text-amber-900 text-sm uppercase">Vocabulary Focus</h3>
+                                <p class="text-2xl font-black text-amber-700">6 Concept Words</p>
+                                <p class="text-xs text-amber-600">From authentic textbook units[cite: 1]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Card -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-900 mb-3">Self-Reading Instructions</h3>
+                <ol class="list-decimal list-inside space-y-2 text-slate-600 text-sm">
+                    <li>Navigate through <strong>Chapter 1, Chapter 2, and Chapter 3</strong> tabs above.</li>
+                    <li>Complete all 12 questions per chapter, which feature Multiple Choice, True/False, Fill-in-the-Blank, and Text Citation/Vocabulary questions.</li>
+                    <li>Click <strong>"Check Answers & Score"</strong> at the bottom of each chapter to receive instant feedback and detailed explanations.</li>
+                    <li>Review the <strong>Concept Vocabulary</strong> section to master key novella terms like <em>distress, amelioration, aversion, asphyxiation, listlessly,</em> and <em>travail</em>[cite: 1].</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SECTION: CHAPTER 1 -->
+        <section id="sec-ch1" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Chapter 1 Self-Reading Assessment</h2>
+                    <p class="text-sm text-slate-500">12 Questions: Multiple Choice, True/False, Fill-in-the-Blank & Vocabulary in Context</p>
+                </div>
+                <div id="score-ch1" class="text-right hidden">
+                    <span class="text-xs text-slate-500 uppercase tracking-wider block">Chapter Score</span>
+                    <span class="text-2xl font-black text-brand-600" id="score-val-ch1">0/12</span>
+                </div>
+            </div>
+
+            <form id="form-ch1" class="space-y-6">
+                <!-- Q1 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-1">
+                    <p class="font-semibold text-slate-900 mb-2">1. [Multiple Choice] What is Gregor Samsa's profession before his transformation?[cite: 5]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_1" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) A bank clerk[cite: 50]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_1" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A traveling salesman[cite: 5]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_1" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) An insurance doctor[cite: 7]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_1" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) A locksmith[cite: 18]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q2 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-2">
+                    <p class="font-semibold text-slate-900 mb-2">2. [True / False] Gregor continues working as a salesman because he loves traveling and meeting new people.[cite: 6, 7]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_2" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_2" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q3 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-3">
+                    <p class="font-semibold text-slate-900 mb-2">3. [Fill in the Blank] Gregor discovered he had been changed into a monstrous verminous insect while waking up from ________ dreams.[cite: 5]</p>
+                    <input type="text" id="c1_3" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q4 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-4">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "Now, quite apart from the fact that the doors were locked, should he really call out for help? In spite of all his <strong>distress</strong>, he was unable to suppress a smile at this idea."[cite: 11]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">4. [Vocabulary in Context] Based on the context above and the textbook vocabulary, what does the word <u>distress</u> mean?[cite: 1]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_4" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Unhappiness or pain[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_4" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A state of being unable to breathe[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_4" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Strong dislike[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_4" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) Difficult work or situation[cite: 1]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q5 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-5">
+                    <p class="font-semibold text-slate-900 mb-2">5. [Multiple Choice] Who comes to Gregor's apartment to inquire about his absence from work?</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_5" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) The Chief Executive[cite: 15, 21]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_5" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) The Office Manager[cite: 12]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_5" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) An office errand boy</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_5" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) The health insurance doctor[cite: 7]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q6 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-6">
+                    <p class="font-semibold text-slate-900 mb-2">6. [True / False] Gregor's father drives Gregor back into his room at the end of Chapter 1 using a newspaper and a walking stick (cane).[cite: 25]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_6" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_6" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q7 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-7">
+                    <p class="font-semibold text-slate-900 mb-2">7. [Fill in the Blank] Gregor unlocks his bedroom door using his ________ because he lacks proper human hands and teeth.[cite: 19]</p>
+                    <input type="text" id="c1_7" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q8 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-8">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "The small limbs had firm floor under them; they obeyed perfectly... Right away he believed that the final <strong>amelioration</strong> of all his suffering was immediately at hand."[cite: 24]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">8. [Vocabulary in Context] In this excerpt, <u>amelioration</u> refers to:[cite: 1, 24]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_8" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) The act of making something better or less painful[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_8" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A state of complete physical paralysis</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_8" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) An intense feeling of fear and panic</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_8" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) A sudden decrease in financial security</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q9 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-9">
+                    <p class="font-semibold text-slate-900 mb-2">9. [Multiple Choice] What framed picture does Gregor keep hanging on his wall?[cite: 5]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_9" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) A portrait of his parents in their youth</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_9" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A photograph cut from a magazine showing a woman in a fur hat and muff[cite: 5]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_9" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) A landscape painting of Prague</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_9" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) A certificate honoring his 5 years of perfect work attendance</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q10 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-10">
+                    <p class="font-semibold text-slate-900 mb-2">10. [True / False] When Gregor finally opens the door, the office manager immediately offers to help him and calls an ambulance.[cite: 17, 20, 23]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_10" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_10" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q11 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-11">
+                    <p class="font-semibold text-slate-900 mb-2">11. [Multiple Choice] How long has Gregor worked without taking a single day off sick before this morning?[cite: 7]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_11" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) 1 year</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_11" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) 3 years</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_11" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) 5 years[cite: 7]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c1_11" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) 10 years</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q12 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c1-12">
+                    <p class="font-semibold text-slate-900 mb-2">12. [Fill in the Blank] Gregor hopes to quit his job once he pays off his parents' ________ to his boss in five or six years.</p>
+                    <input type="text" id="c1_12" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <button type="button" onclick="gradeChapter(1)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-md">Check Answers & Score Chapter 1</button>
+            </form>
+        </section>
+
+        <!-- SECTION: CHAPTER 2 -->
+        <section id="sec-ch2" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Chapter 2 Self-Reading Assessment</h2>
+                    <p class="text-sm text-slate-500">12 Questions: Multiple Choice, True/False, Fill-in-the-Blank & Vocabulary in Context</p>
+                </div>
+                <div id="score-ch2" class="text-right hidden">
+                    <span class="text-xs text-slate-500 uppercase tracking-wider block">Chapter Score</span>
+                    <span class="text-2xl font-black text-brand-600" id="score-val-ch2">0/12</span>
+                </div>
+            </div>
+
+            <form id="form-ch2" class="space-y-6">
+                <!-- Q1 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-1">
+                    <p class="font-semibold text-slate-900 mb-2">1. [Multiple Choice] What food does Grete bring first to test Gregor's new appetite, which he turns away from with aversion?[cite: 28, 29]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_1" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Fresh bread and butter[cite: 32]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_1" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) Sweetened milk with white bread pieces[cite: 28]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_1" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Rotten vegetables and white sauce[cite: 32]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_1" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) A bowl of water and dry cheese[cite: 32]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q2 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-2">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "He turned away from the bowl almost with <strong>aversion</strong> and crept back into the middle of the room."[cite: 29]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">2. [Vocabulary in Context] What does the word <u>aversion</u> mean in this sentence?[cite: 1, 29]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_2" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Strong dislike[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_2" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) Unhappiness or pain[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_2" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Act of improving a situation[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_2" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) Lack of physical energy[cite: 1]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q3 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-3">
+                    <p class="font-semibold text-slate-900 mb-2">3. [True / False] Gregor prefers fresh, high-quality food over old, half-rotten vegetables after his transformation.[cite: 32]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_3" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_3" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q4 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-4">
+                    <p class="font-semibold text-slate-900 mb-2">4. [Fill in the Blank] To hide himself from his sister when she enters the room, Gregor spends four hours pulling a ________ over the couch.</p>
+                    <input type="text" id="c2_4" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q5 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-5">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "In the midst of minor attacks of <strong>asphyxiation</strong>, he looked at her with somewhat protruding eyes..."[cite: 33]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">5. [Vocabulary in Context] <u>Asphyxiation</u> is defined as:[cite: 1, 33]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_5" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) A state of being unable to breathe[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_5" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A sudden feeling of relief</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_5" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Extreme physical strength</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_5" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) An outburst of anger</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q6 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-6">
+                    <p class="font-semibold text-slate-900 mb-2">6. [Multiple Choice] What secret plan did Gregor have for his sister Grete before his transformation?[cite: 36, 37]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_6" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) To buy her a new apartment in the countryside</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_6" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) To pay for her to attend a music conservatory to play violin[cite: 36, 37]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_6" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) To hire her as his assistant in commercial sales</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_6" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) To finance her wedding to a bank officer</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q7 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-7">
+                    <p class="font-semibold text-slate-900 mb-2">7. [True / False] Gregor's mother believes that removing the furniture from Gregor's room will make him feel happier and give him total freedom.[cite: 43, 44]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_7" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_7" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q8 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-8">
+                    <p class="font-semibold text-slate-900 mb-2">8. [Fill in the Blank] To keep his room from being completely emptied, Gregor climbs up and covers the picture of the woman wrapped in ________.[cite: 47, 48]</p>
+                    <input type="text" id="c2_8" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q9 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-9">
+                    <p class="font-semibold text-slate-900 mb-2">9. [Multiple Choice] What weapon does Gregor's father use to injure Gregor during his emotional outburst in Chapter 2?</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_9" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Heavy books from the writing desk[cite: 45]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_9" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) Apples thrown from a fruit bowl[cite: 52]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_9" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) A heavy wooden footstool</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_9" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) Glass medicine bottles[cite: 49]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q10 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-10">
+                    <p class="font-semibold text-slate-900 mb-2">10. [True / False] Gregor discovers that his father saved a small amount of money from his collapsed business, along with leftover cash commissions from Gregor's salary.[cite: 35, 37]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_10" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_10" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q11 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-11">
+                    <p class="font-semibold text-slate-900 mb-2">11. [Multiple Choice] How has Gregor's father changed physically when Gregor sees him in Chapter 2?[cite: 50, 51]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_11" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) He is frail, bedridden, and unable to speak clearly</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_11" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) He wears a sharp bank servant's uniform, standing erect and vigilant[cite: 51]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_11" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) He has taken up violin playing alongside Grete[cite: 36, 64]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c2_11" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) He is dressed as a traveling salesman preparing to take Gregor's place</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q12 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c2-12">
+                    <p class="font-semibold text-slate-900 mb-2">12. [Fill in the Blank] Gregor develops a new leisure activity in his room: crawling across the walls and hanging from the ________.</p>
+                    <input type="text" id="c2_12" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <button type="button" onclick="gradeChapter(2)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-md">Check Answers & Score Chapter 2</button>
+            </form>
+        </section>
+
+        <!-- SECTION: CHAPTER 3 -->
+        <section id="sec-ch3" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Chapter 3 Self-Reading Assessment</h2>
+                    <p class="text-sm text-slate-500">12 Questions: Multiple Choice, True/False, Fill-in-the-Blank & Vocabulary in Context</p>
+                </div>
+                <div id="score-ch3" class="text-right hidden">
+                    <span class="text-xs text-slate-500 uppercase tracking-wider block">Chapter Score</span>
+                    <span class="text-2xl font-black text-brand-600" id="score-val-ch3">0/12</span>
+                </div>
+            </div>
+
+            <form id="form-ch3" class="space-y-6">
+                <!-- Q1 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-1">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "Propped up by both women, he would heave himself up, elaborately, as if for him it was the greatest <strong>travail</strong>..."[cite: 56]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">1. [Vocabulary in Context] What does <u>travail</u> mean in this literary sentence?[cite: 1, 56]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_1" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Difficult situation or work[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_1" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) Act of making something less painful[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_1" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Strong dislike or aversion[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_1" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) State of being unable to breathe[cite: 1]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q2 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-2">
+                    <p class="font-semibold text-slate-900 mb-2">2. [Multiple Choice] How does Gregor's family generate income in Chapter 3 to stay financially afloat?[cite: 56, 61]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_2" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) They take jobs (father at bank, mother sewing, sister as salesgirl) and rent a room to 3 lodgers[cite: 56, 61]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_2" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) They sell the apartment and move immediately to the countryside[cite: 76]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_2" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) They rely entirely on Gregor's leftover savings and government disability funds</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_2" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) Grete becomes a professional violinist playing at local concert halls[cite: 36, 64]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q3 Vocab Citation -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-3">
+                    <div class="bg-slate-50 p-4 border-l-4 border-slate-600 rounded text-sm italic mb-3 text-slate-700">
+                        "Sometimes in his general exhaustion he couldn't listen any more and let his head bang <strong>listlessly</strong> against the door..."[cite: 37]
+                    </div>
+                    <p class="font-semibold text-slate-900 mb-2">3. [Vocabulary in Context] What does the adverb <u>listlessly</u> signify?[cite: 1, 37]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_3" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Without energy or interest[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_3" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) With fierce determination and anger</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_3" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) In a state of breathlessness[cite: 1]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_3" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) With careful strategic planning[cite: 11]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q4 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-4">
+                    <p class="font-semibold text-slate-900 mb-2">4. [True / False] The three lodgers are very impressed by Grete's violin playing and offer to pay for her conservatory education.[cite: 64, 65]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_4" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_4" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q5 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-5">
+                    <p class="font-semibold text-slate-900 mb-2">5. [Multiple Choice] What causes the lodgers to announce they are moving out immediately without paying rent?[cite: 66, 68]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_5" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) They catch sight of Gregor creeping into the living room[cite: 66]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_5" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) The food served to them was cold and undercooked[cite: 63]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_5" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) Mr. Samsa demands double their rent payments</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_5" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) Grete refuses to play the violin for them[cite: 64]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q6 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-6">
+                    <p class="font-semibold text-slate-900 mb-2">6. [Fill in the Blank] It is Gregor's sister, ________, who finally insists to her parents: "We must try to get rid of it."[cite: 69]</p>
+                    <input type="text" id="c3_6" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q7 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-7">
+                    <p class="font-semibold text-slate-900 mb-2">7. [Multiple Choice] What remains embedded in Gregor's back until his death as a visible reminder of his father's anger?[cite: 54, 72]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_7" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) A piece of broken glass[cite: 49]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_7" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) A rotten apple[cite: 72]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_7" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) A needle from sewing work[cite: 56]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_7" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) A wooden broom splinter[cite: 73]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q8 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-8">
+                    <p class="font-semibold text-slate-900 mb-2">8. [True / False] Before he dies at 3 o'clock in the morning, Gregor feels deep affection and love for his family.[cite: 72]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_8" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_8" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q9 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-9">
+                    <p class="font-semibold text-slate-900 mb-2">9. [Multiple Choice] Who discovers Gregor's dead body in the early morning?[cite: 72, 73]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_9" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) Grete</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_9" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) Mrs. Samsa</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_9" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) The old cleaning woman[cite: 72, 73]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_9" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) The middle lodger[cite: 63, 74]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q10 Blank -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-10">
+                    <p class="font-semibold text-slate-900 mb-2">10. [Fill in the Blank] After Gregor's death, the family decides to take a day off and ride an electric ________ into the open air outside the city.[cite: 76]</p>
+                    <input type="text" id="c3_10" class="w-full md:w-1/2 p-2 border border-slate-300 rounded text-sm focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Type your answer here...">
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q11 T/F -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-11">
+                    <p class="font-semibold text-slate-900 mb-2">11. [True / False] At the end of the novella, Gregor's parents realize that Grete has blossomed into a beautiful young woman and think about finding a husband for her.[cite: 77]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_11" value="True" class="h-4 w-4 text-brand-600">
+                            <span>True</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_11" value="False" class="h-4 w-4 text-brand-600">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <!-- Q12 MC -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 q-container" id="q-c3-12">
+                    <p class="font-semibold text-slate-900 mb-2">12. [Multiple Choice] What derogatory nickname does the cleaning woman use when calling Gregor out from his room?[cite: 60]</p>
+                    <div class="space-y-2 text-sm">
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_12" value="A" class="h-4 w-4 text-brand-600">
+                            <span>A) "Old dung beetle"[cite: 60]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_12" value="B" class="h-4 w-4 text-brand-600">
+                            <span>B) "Little cockroach"</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_12" value="C" class="h-4 w-4 text-brand-600">
+                            <span>C) "Monster bug"[cite: 5, 69]</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-2 rounded hover:bg-slate-50 border border-transparent cursor-pointer">
+                            <input type="radio" name="c3_12" value="D" class="h-4 w-4 text-brand-600">
+                            <span>D) "Lazy pest"[cite: 7]</span>
+                        </label>
+                    </div>
+                    <div class="explanation hidden mt-3 p-3 text-xs rounded bg-slate-100"></div>
+                </div>
+
+                <button type="button" onclick="gradeChapter(3)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-md">Check Answers & Score Chapter 3</button>
+            </form>
+        </section>
+
+        <!-- SECTION: CONCEPT VOCABULARY -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Concept Vocabulary Mastery</h2>
+                <p class="text-slate-600 text-sm">Review the core high school vocabulary chart from <em>The Metamorphosis</em> unit[cite: 1].</p>
+            </div>
+
+            <!-- Reference Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider">
+                            <th class="p-4">Word & Pronunciation[cite: 1]</th>
+                            <th class="p-4">Part of Speech[cite: 1]</th>
+                            <th class="p-4">Textbook Definition[cite: 1]</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-sm">
+                        <tr>
+                            <td class="p-4 font-bold text-brand-700">distress <span class="text-xs font-normal text-slate-500">(dihs TREHS)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">noun[cite: 1]</td>
+                            <td class="p-4 text-slate-800">unhappiness or pain[cite: 1]</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-4 font-bold text-brand-700">amelioration <span class="text-xs font-normal text-slate-500">(uh meel yuh RAY shuhn)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">noun[cite: 1]</td>
+                            <td class="p-4 text-slate-800">act of making something better or less painful[cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-brand-700">aversion <span class="text-xs font-normal text-slate-500">(uh VUR zhuhn)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">noun[cite: 1]</td>
+                            <td class="p-4 text-slate-800">strong dislike[cite: 1]</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-4 font-bold text-brand-700">asphyxiation <span class="text-xs font-normal text-slate-500">(as fihk see AY shuhn)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">noun[cite: 1]</td>
+                            <td class="p-4 text-slate-800">state of being unable to breathe[cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-brand-700">listlessly <span class="text-xs font-normal text-slate-500">(LIHST luhs lee)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">adverb[cite: 1]</td>
+                            <td class="p-4 text-slate-800">without energy or interest[cite: 1]</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-4 font-bold text-brand-700">travail <span class="text-xs font-normal text-slate-500">(truh VAYL)</span>[cite: 1]</td>
+                            <td class="p-4 italic text-slate-600">noun[cite: 1]</td>
+                            <td class="p-4 text-slate-800">difficult situation or work[cite: 1]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION: GITHUB DEPLOYMENT GUIDE -->
+        <section id="sec-github" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Publishing to GitHub Pages (PrepaPráctica Guide)</h2>
+                <p class="text-slate-600 text-sm">Follow these quick steps to host this single HTML page live on GitHub for free as a public web application.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="w-8 h-8 bg-brand-600 text-white font-bold rounded-full flex items-center justify-center">1</div>
+                    <h3 class="font-bold text-slate-900">Create Repository</h3>
+                    <p class="text-sm text-slate-600">Log into <a href="https://github.com" target="_blank" class="text-brand-600 underline">GitHub.com</a>, click <strong>"New Repository"</strong>, name it <code>metamorphosis-practice</code>, and set it to <strong>Public</strong>.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="w-8 h-8 bg-brand-600 text-white font-bold rounded-full flex items-center justify-center">2</div>
+                    <h3 class="font-bold text-slate-900">Upload HTML File</h3>
+                    <p class="text-sm text-slate-600">Click <strong>"Add File" &gt; "Upload files"</strong>. Drag and drop this HTML file renamed as <code>index.html</code> into the repository root.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="w-8 h-8 bg-brand-600 text-white font-bold rounded-full flex items-center justify-center">3</div>
+                    <h3 class="font-bold text-slate-900">Enable GitHub Pages</h3>
+                    <p class="text-sm text-slate-600">Go to <strong>Settings &gt; Pages</strong>. Under <em>Branch</em>, select <code>main</code> (or <code>master</code>) and click <strong>Save</strong>.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="w-8 h-8 bg-brand-600 text-white font-bold rounded-full flex items-center justify-center">4</div>
+                    <h3 class="font-bold text-slate-900">Access & Share</h3>
+                    <p class="text-sm text-slate-600">Your site will be live within 1 minute at: <br><code class="bg-slate-100 p-1 rounded text-xs text-brand-700">https://yourusername.github.io/metamorphosis-practice/</code></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            <p>&copy; PrepaPráctica Educational Resources. Interactive Reading Companion for High School Students.</p>
+        </div>
+    </footer>
+
+    <!-- Answer Key & Interactive Logic -->
+    <script>
+        const answers = {
+            ch1: {
+                c1_1: 'B',
+                c1_2: 'False',
+                c1_3: ['anxious', 'anxious dreams'],
+                c1_4: 'A',
+                c1_5: 'B',
+                c1_6: 'True',
+                c1_7: ['mouth', 'jaw', 'jaws'],
+                c1_8: 'A',
+                c1_9: 'B',
+                c1_10: 'False',
+                c1_11: 'C',
+                c1_12: ['debt', 'debts']
+            },
+            ch2: {
+                c2_1: 'B',
+                c2_2: 'A',
+                c2_3: 'False',
+                c2_4: ['sheet'],
+                c2_5: 'A',
+                c2_6: 'B',
+                c2_7: 'False',
+                c2_8: ['fur', 'fur hat', 'furs'],
+                c2_9: 'B',
+                c2_10: 'True',
+                c2_11: 'B',
+                c2_12: ['ceiling']
+            },
+            ch3: {
+                c3_1: 'A',
+                c3_2: 'A',
+                c3_3: 'A',
+                c3_4: 'False',
+                c3_5: 'A',
+                c3_6: ['grete', 'his sister'],
+                c3_7: 'B',
+                c3_8: 'True',
+                c3_9: 'C',
+                c3_10: ['tram', 'electric tram', 'streetcar'],
+                c3_11: 'True',
+                c3_12: 'A'
+            }
+        };
+
+        const explanations = {
+            ch1: {
+                c1_1: "Gregor Samsa is a traveling salesman who works tirelessly to pay off his family's debt.[cite: 5, 7]",
+                c1_2: "False: Gregor dislikes the travel stresses, poor food, and superficial relationships involved in his job.[cite: 6]",
+                c1_3: "The famous opening line states he woke up from 'anxious dreams'.[cite: 5]",
+                c1_4: "Distress means unhappiness or pain.[cite: 1]",
+                c1_5: "The Office Manager (Chief Clerk) comes to Gregor's apartment in person when Gregor misses the 5 AM train.[cite: 7, 12]",
+                c1_6: "True: His father stamps his feet, waves a newspaper and cane, and forces Gregor back into his room.[cite: 25]",
+                c1_7: "Lacking human hands, Gregor turns the key with his mouth/jaws.[cite: 19]",
+                c1_8: "Amelioration means the act of making something better or less painful.[cite: 1]",
+                c1_9: "Gregor cut out a picture of a lady in a fur hat and fur muff and set it in a gilt frame.[cite: 5]",
+                c1_10: "False: The office manager flees in terror down the staircase upon seeing Gregor.[cite: 20, 23]",
+                c1_11: "Gregor had never been sick once in five years of service.[cite: 7]",
+                c1_12: "Gregor stays at his job to pay off his parents' debt to his boss.[cite: 7]"
+            },
+            ch2: {
+                c2_1: "Grete first brings milk with bread, but Gregor turns away from it with aversion.[cite: 28, 29]",
+                c2_2: "Aversion means a strong dislike.[cite: 1]",
+                c2_3: "False: Gregor now prefers half-rot vegetables and old cheese over fresh food.[cite: 32]",
+                c2_4: "Gregor drags a sheet onto the couch to cover himself completely.[cite: 41]",
+                c2_5: "Asphyxiation is defined as a state of being unable to breathe.[cite: 1]",
+                c2_6: "Gregor secretly planned to send Grete to a music conservatory to study violin.[cite: 36, 37]",
+                c2_7: "False: His mother fears that emptying the room shows they are abandoning hope for his recovery.[cite: 44]",
+                c2_8: "Gregor clings to the picture of the lady in fur on the wall to protect it.[cite: 47, 48]",
+                c2_9: "His father bombards him with small red apples from the fruit bowl.[cite: 52]",
+                c2_10: "True: Gregor's father preserved a small reserve fund from his failed business.[cite: 35, 37]",
+                c2_11: "His father now stands upright in a tight bank servant's uniform.[cite: 51]",
+                c2_12: "Gregor discovers the joy of crawling on the walls and hanging from the ceiling.[cite: 41]"
+            },
+            ch3: {
+                c3_1: "Travail means a difficult situation or work.[cite: 1]",
+                c3_2: "All three family members take jobs and rent out a room to three lodgers.[cite: 56, 61]",
+                c3_3: "Listlessly means without energy or interest.[cite: 1]",
+                c3_4: "False: The lodgers lose interest in her playing, smoke cigars, and talk among themselves.[cite: 65]",
+                c3_5: "The lodgers discover Gregor peeking into the living room during the violin recital.[cite: 66]",
+                c3_6: "Grete insists to her father that they must get rid of the creature.[cite: 68, 69]",
+                c3_7: "An apple remains lodged in Gregor's flesh, causing severe inflammation.[cite: 54, 72]",
+                c3_8: "True: Gregor spends his last quiet hours remembering his family with deep love.[cite: 72]",
+                c3_9: "The old cleaning woman finds Gregor's dried body in the morning.[cite: 72, 73]",
+                c3_10: "The family takes an electric tram into the countryside to celebrate their new start.[cite: 76, 77]",
+                c3_11: "True: The novella concludes with Mr. and Mrs. Samsa noticing Grete's transformation into a young woman ready for marriage.[cite: 77]",
+                c3_12: "The cleaning woman calls Gregor an 'old dung beetle'.[cite: 60]"
+            }
+        };
+
+        function switchTab(tabId) {
+            ['home', 'ch1', 'ch2', 'ch3', 'vocab', 'github'].forEach(id => {
+                document.getElementById('sec-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('active');
+            });
+            document.getElementById('sec-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        function gradeChapter(chNum) {
+            const chKey = 'ch' + chNum;
+            const chAns = answers[chKey];
+            const chExp = explanations[chKey];
+            let score = 0;
+
+            for (let i = 1; i <= 12; i++) {
+                const qKey = `c${chNum}_${i}`;
+                const container = document.getElementById(`q-${qKey}`);
+                const expDiv = container.querySelector('.explanation');
+                let isCorrect = false;
+
+                if (Array.isArray(chAns[qKey])) {
+                    // Fill in blank
+                    const userVal = document.getElementById(qKey).value.trim().toLowerCase();
+                    isCorrect = chAns[qKey].some(valid => userVal === valid);
+                } else {
+                    // Radio buttons
+                    const selected = document.querySelector(`input[name="${qKey}"]:checked`);
+                    if (selected && selected.value === chAns[qKey]) {
+                        isCorrect = true;
+                    }
+                }
+
+                expDiv.classList.remove('hidden');
+                if (isCorrect) {
+                    score++;
+                    container.className = "bg-white p-6 rounded-xl shadow-sm border border-emerald-500 bg-emerald-50/20 q-container";
+                    expDiv.className = "explanation mt-3 p-3 text-xs rounded correct-answer font-medium";
+                    expDiv.innerHTML = `✓ Correct! ${chExp[qKey]}`;
+                } else {
+                    container.className = "bg-white p-6 rounded-xl shadow-sm border border-red-500 bg-red-50/20 q-container";
+                    expDiv.className = "explanation mt-3 p-3 text-xs rounded incorrect-answer font-medium";
+                    expDiv.innerHTML = `✗ Incorrect. Correct answer: ${Array.isArray(chAns[qKey]) ? chAns[qKey][0] : chAns[qKey]}. <br>${chExp[qKey]}`;
+                }
+            }
+
+            const scoreDisplay = document.getElementById(`score-${chKey}`);
+            const scoreVal = document.getElementById(`score-val-${chKey}`);
+            scoreDisplay.classList.remove('hidden');
+            scoreVal.innerText = `${score}/12`;
+            
+            // Scroll back to top of section for viewing score
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
